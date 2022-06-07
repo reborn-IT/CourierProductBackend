@@ -17,6 +17,7 @@ public class AdminController {
 
     private final AdminService adminService;
 
+    // This end point is to get all service provider details
     @PostMapping(value = "/serviceProvider", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<CommonResponse<String>> addServiceProvider(@RequestBody ServiceProviderAddingDto serviceProviderAddingDto) {
         adminService.addServiceProvider(serviceProviderAddingDto);
