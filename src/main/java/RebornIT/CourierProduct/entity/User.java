@@ -24,7 +24,7 @@ public class User {
     private String email;
     private String postalAddress;
     //activate=1 Deactivate=0
-    @Column(unique = true, nullable = false)
+//    @Column(unique = true, nullable = false)
     private String password;
     private Integer status;
 
