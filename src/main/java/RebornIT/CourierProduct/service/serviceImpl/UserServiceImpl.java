@@ -56,12 +56,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<ServiceProviderDto> getServiceProviderList() {
         List<ServiceProvider> serviceProviderList = serviceProviderRepository.findAll();
+        //System.out.print(serviceProviderList);
         List<ServiceProviderDto> serviceProviderDtoList = new ArrayList<>();
         for (ServiceProvider serviceProvider : serviceProviderList) {
             serviceProviderDtoList.add(new ServiceProviderDto(serviceProvider.getId(), serviceProvider.getName(), serviceProvider.getAddress(),
-                    serviceProvider.getWebsite(), serviceProvider.getHotline(), serviceProvider.getDescription(), serviceProvider.getNearestBranch(),
-                    serviceProvider.getServices()));
+                    serviceProvider.getWebsite(), serviceProvider.getHotline(), serviceProvider.getDescription(), serviceProvider.getNearestBranch()));
         }
+        //System.out.println(serviceProviderList.get(1).getId());
         return serviceProviderDtoList;
     }
 

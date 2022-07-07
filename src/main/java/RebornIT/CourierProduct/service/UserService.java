@@ -11,4 +11,8 @@ public interface UserService {
     Long login(LoginDto loginDto);
     List<ServiceProviderDto> getServiceProviderList();
     List<ServiceDto> getServiceList();
+
+
+
+
 }

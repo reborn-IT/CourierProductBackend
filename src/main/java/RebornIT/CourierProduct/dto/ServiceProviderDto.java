@@ -18,6 +18,15 @@ public class ServiceProviderDto {
     private String hotline;
     private String description;
     private String nearestBranch;
-    private List<CourierService> services;
-
+//    private List<CourierService> services;
+//
+//    public ServiceProviderDto(Long id, String name, String address, String website, String hotline, String description, String nearestBranch) {
+//        this.id = id;
+//        this.name = name;
+//        this.address = address;
+//        this.website = website;
+//        this.hotline = hotline;
+//        this.description = description;
+//        this.nearestBranch = nearestBranch;
+//    }
 }

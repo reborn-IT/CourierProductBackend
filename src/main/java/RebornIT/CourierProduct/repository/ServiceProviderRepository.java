@@ -12,4 +12,6 @@ public interface ServiceProviderRepository extends JpaRepository<ServiceProvider
 
     @Query(value = "select * from service_provider", nativeQuery = true)
     List<ServiceProvider> getAllServiceProvider();
+
+    List<ServiceProvider> findAll();
 }
