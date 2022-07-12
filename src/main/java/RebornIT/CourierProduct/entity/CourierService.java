@@ -20,4 +20,8 @@ public class CourierService {
     @ManyToMany(mappedBy = "services")
     private List<ServiceProvider> serviceProviders;
 
+    public CourierService(Long id, String service) {
+        this.id = id;
+        this.service = service;
+    }
 }

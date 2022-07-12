@@ -18,6 +18,7 @@ public class ServiceProviderDto {
     private String hotline;
     private String description;
     private String nearestBranch;
+    private List<ServiceDto> serviceDto;
 //    private List<CourierService> services;
 //
 //    public ServiceProviderDto(Long id, String name, String address, String website, String hotline, String description, String nearestBranch) {

@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -56,11 +57,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<ServiceProviderDto> getServiceProviderList() {
         List<ServiceProvider> serviceProviderList = serviceProviderRepository.findAll();
-        //System.out.print(serviceProviderList);
         List<ServiceProviderDto> serviceProviderDtoList = new ArrayList<>();
         for (ServiceProvider serviceProvider : serviceProviderList) {
-            serviceProviderDtoList.add(new ServiceProviderDto(serviceProvider.getId(), serviceProvider.getName(), serviceProvider.getAddress(),
-                    serviceProvider.getWebsite(), serviceProvider.getHotline(), serviceProvider.getDescription(), serviceProvider.getNearestBranch()));
+            List<ServiceDto> serviceDtoList = new ArrayList<>();
+            List<Long> courierServiceIdList = courierServiceRepository.getCourierServicesByProviderId(serviceProvider.getId());
+            //System.out.println(courierServiceIdList);
+            List<CourierService> courierServiceList = new ArrayList<>();
+            for (Long courierServiceId : courierServiceIdList
+            ) {
+                CourierService courierService = courierServiceRepository.getCourierServicesById(courierServiceId);
+                serviceDtoList.add(new ServiceDto(courierService.getId(), courierService.getService()));
+                System.out.println(serviceDtoList);
+            }
+
+            serviceProviderDtoList.add(new ServiceProviderDto(serviceProvider.getId(), serviceProvider.getName(), serviceProvider.getAddress(), serviceProvider.getWebsite(),
+                    serviceProvider.getHotline(), serviceProvider.getDescription(), serviceProvider.getNearestBranch(), serviceDtoList));
+
+
         }
         //System.out.println(serviceProviderList.get(1).getId());
         return serviceProviderDtoList;
