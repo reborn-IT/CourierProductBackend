@@ -31,10 +31,11 @@ public class UserServiceImpl implements UserService {
     private final CourierServiceRepository courierServiceRepository;
 
     @Override
-    public void save(UserRegistrationDto registrationDto) {
+    public Long save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getRole(), registrationDto.getFirstName(), registrationDto.getLastName(), registrationDto.getMobileNumber(), registrationDto.getEmail(),
                 registrationDto.getPostalAddress(), registrationDto.getPassword(), 1);
         userRepository.save(user);
+        return user.getId();
     }
 
     @Override

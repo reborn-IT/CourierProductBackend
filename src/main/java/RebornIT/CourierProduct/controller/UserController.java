@@ -19,9 +19,9 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping(value = "/registration", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<CommonResponse<String>> registerUser(@RequestBody UserRegistrationDto userRegistrationDto) {
-        userService.save(userRegistrationDto);
-        return ResponseEntity.ok(new CommonResponse<>(true, "you have successfully registered"));
+    public ResponseEntity<CommonResponse<Long>> registerUser(@RequestBody UserRegistrationDto userRegistrationDto) {
+        Long id = userService.save(userRegistrationDto);
+        return ResponseEntity.ok(new CommonResponse<>(true, id));
     }
 
     @PostMapping(value = "/favourite/serviceProvider", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
